@@ -40,8 +40,7 @@ public class ThirdRecyclerAdapter extends RecyclerView.Adapter<ThirdRecyclerAdap
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(context).inflate(R.layout.movieposter_layout, parent, false);
-        SharedPreferences prefLocation = view.getContext().getSharedPreferences("location", MODE_PRIVATE);
-        location = prefLocation.getString("city", "Select City");
+
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
@@ -65,6 +64,8 @@ public class ThirdRecyclerAdapter extends RecyclerView.Adapter<ThirdRecyclerAdap
    holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SharedPreferences prefLocation = view.getContext().getSharedPreferences("location", MODE_PRIVATE);
+                location = prefLocation.getString("city", "Select City");
                 if(!Objects.equals(location, "Select City")){
                     Intent intent = new Intent(context, MovieDetailsActivity.class);
                     intent.putExtra("movie_name", arrThird.get(holder.getLayoutPosition()).mName);

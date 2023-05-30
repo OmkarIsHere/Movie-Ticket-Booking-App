@@ -130,12 +130,13 @@ public class TheatreListFragment extends BottomSheetDialogFragment {
                         @Override
                         public void onResponse(String response) {
                             try {
-                                if (Objects.equals(response, "no")){
-                                    Toast.makeText(getApplicationContext(),"No record found", Toast.LENGTH_SHORT).show();
+                                JSONArray tList = new JSONArray(response);
+                                JSONObject theatreListObjects = tList.getJSONObject(0);
+                                if (theatreListObjects.getString("no").equals("no record found")){
+                                    Toast.makeText(getApplicationContext(),"No theatre available", Toast.LENGTH_SHORT).show();
                                 }else{
-                                    JSONArray tList = new JSONArray(response);
                                     for(int i=0; i<tList.length(); i++){
-                                        JSONObject theatreListObjects = tList.getJSONObject(i);
+                                        theatreListObjects = tList.getJSONObject(i);
                                         String tId = theatreListObjects.getString("theatre_id");
                                         String tName = theatreListObjects.getString("theatre_name");
                                         String language = theatreListObjects.getString("show_language");

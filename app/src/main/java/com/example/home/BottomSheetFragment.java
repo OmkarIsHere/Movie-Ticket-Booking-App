@@ -162,42 +162,43 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
         back_pune.setBackgroundColor(R.drawable.background_white);
 
 
-
-        if (button.equals("ahemdabad")) {
-            ahemdabad.setBackgroundColor(R.drawable.background_colored);
-            back_ahemdabad.setBackgroundColor(R.drawable.background_colored);
-        }
-        else if (button.equals("banglore")) {
-            banglore.setBackgroundColor(R.drawable.background_colored);
-            back_banglore.setBackgroundColor(R.drawable.background_colored);
-        }
-        else if (button.equals("chandigarh")) {
-            chandigarh.setBackgroundColor(R.drawable.background_colored);
-            back_chandigarh.setBackgroundColor(R.drawable.background_colored);
-        }
-        else if (button.equals("chennai")) {
-            chennai.setBackgroundColor(R.drawable.background_colored);
-            back_chennai.setBackgroundColor(R.drawable.background_colored);
-        }
-        else if (button.equals("delhi")) {
-            delhi.setBackgroundColor(R.drawable.background_colored);
-            back_delhi.setBackgroundColor(R.drawable.background_colored);
-        }
-        else if (button.equals("hyderabad")) {
-            hyderabad.setBackgroundColor(R.drawable.background_colored);
-            back_hyderabad.setBackgroundColor(R.drawable.background_colored);
-        }
-        else if (button.equals("mumbai")) {
-            mumbai.setBackgroundColor(R.drawable.background_colored);
-            back_mumbai.setBackgroundColor(R.drawable.background_colored);
-        }
-        else if (button.equals("pune")) {
-            pune.setBackgroundColor(R.drawable.background_colored);
-            back_pune.setBackgroundColor(R.drawable.background_colored);
-        }
-        else if (button.equals("kolkata")) {
-            kolkata.setBackgroundColor(R.drawable.background_colored);
-            back_kolkata.setBackgroundColor(R.drawable.background_colored);
+        switch (button) {
+            case "ahemdabad":
+                ahemdabad.setBackgroundColor(R.drawable.background_colored);
+                back_ahemdabad.setBackgroundColor(R.drawable.background_colored);
+                break;
+            case "banglore":
+                banglore.setBackgroundColor(R.drawable.background_colored);
+                back_banglore.setBackgroundColor(R.drawable.background_colored);
+                break;
+            case "chandigarh":
+                chandigarh.setBackgroundColor(R.drawable.background_colored);
+                back_chandigarh.setBackgroundColor(R.drawable.background_colored);
+                break;
+            case "chennai":
+                chennai.setBackgroundColor(R.drawable.background_colored);
+                back_chennai.setBackgroundColor(R.drawable.background_colored);
+                break;
+            case "delhi":
+                delhi.setBackgroundColor(R.drawable.background_colored);
+                back_delhi.setBackgroundColor(R.drawable.background_colored);
+                break;
+            case "hyderabad":
+                hyderabad.setBackgroundColor(R.drawable.background_colored);
+                back_hyderabad.setBackgroundColor(R.drawable.background_colored);
+                break;
+            case "mumbai":
+                mumbai.setBackgroundColor(R.drawable.background_colored);
+                back_mumbai.setBackgroundColor(R.drawable.background_colored);
+                break;
+            case "pune":
+                pune.setBackgroundColor(R.drawable.background_colored);
+                back_pune.setBackgroundColor(R.drawable.background_colored);
+                break;
+            case "kolkata":
+                kolkata.setBackgroundColor(R.drawable.background_colored);
+                back_kolkata.setBackgroundColor(R.drawable.background_colored);
+                break;
         }
 
     }
