@@ -130,13 +130,11 @@ public class TheatreListFragment extends BottomSheetDialogFragment {
                         @Override
                         public void onResponse(String response) {
                             try {
-                                JSONArray tList = new JSONArray(response);
-                                JSONObject theatreListObjects = tList.getJSONObject(0);
-                                if (theatreListObjects.getString("no").equals("no record found")){
-                                    Toast.makeText(getApplicationContext(),"No theatre available", Toast.LENGTH_SHORT).show();
-                                }else{
+//                                JSONObject theatreListObjects = tList.getJSONObject(0);
+                                if (!Objects.equals(response, "no")){
+                                    JSONArray tList = new JSONArray(response);
                                     for(int i=0; i<tList.length(); i++){
-                                        theatreListObjects = tList.getJSONObject(i);
+                                        JSONObject theatreListObjects = tList.getJSONObject(i);
                                         String tId = theatreListObjects.getString("theatre_id");
                                         String tName = theatreListObjects.getString("theatre_name");
                                         String language = theatreListObjects.getString("show_language");
@@ -153,10 +151,13 @@ public class TheatreListFragment extends BottomSheetDialogFragment {
                                     TheatreListRecyclerAdapter fadapter = new TheatreListRecyclerAdapter(getApplicationContext() , theatreList);
                                     theatreRecycler.setAdapter(fadapter);
                                     Log.d("theatre", "Theatre set adapter");
+                                }else{
+                                    Toast.makeText(getApplicationContext(),"No theatre available", Toast.LENGTH_SHORT).show();
                                 }
 
                             } catch (JSONException e) {
-                                throw new RuntimeException(e);
+//                                throw new RuntimeException(e);
+                                Log.d(TAG, "onResponse: "+ e);
                             }
                             progressBar.setVisibility(View.GONE);
                         }
@@ -164,8 +165,7 @@ public class TheatreListFragment extends BottomSheetDialogFragment {
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(getApplicationContext(), "" + error.getMessage(), Toast.LENGTH_LONG).show();
-                            Log.e("theatre", "theatre LogE " + error.getMessage());
+                            Log.d("theatre", "theatre LogE " + error.getMessage());
 
                         }
 

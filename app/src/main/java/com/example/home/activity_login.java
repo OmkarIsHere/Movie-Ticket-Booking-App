@@ -123,9 +123,9 @@ public class activity_login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);  //<-- Temp Code
-                startActivity(intent);
-                finish();
+//                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);  //<-- Temp Code
+//                startActivity(intent);
+//                finish();
                 if (validation()) {    //<-- Temporary commenting this code for testing...
                     progressBar.setVisibility(View.VISIBLE);
                     rl.setVisibility(View.VISIBLE);
