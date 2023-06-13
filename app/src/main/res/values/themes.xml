@@ -2,14 +2,15 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Home" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-         <item name="colorPrimary">@color/black</item>
          <item name="bottomSheetDialogTheme">@style/BottomSheetDialogueTheme</item>
- <item name="android:navigationBarColor">@color/black</item>
-        <item name="android:statusBarColor">@color/black</item>
+         <item name="colorPrimary">@color/black</item>
+<!--        <item name="android:windowLightStatusBar">true</item>-->
+        <item name="colorPrimaryVariant">@color/black</item>
+        <item name="android:navigationBarColor">?android:attr/colorPrimary</item>
+        <item name="android:statusBarColor">?android:attr/colorPrimary</item>
     </style>
 
     <style name="Theme.Home" parent="Base.Theme.Home" />
-
 
     <style name="BottomSheetDialogueTheme" parent="Theme.Design.Light.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
@@ -46,7 +47,7 @@
 
     <!--    Line Design -->
     <style name="line_design">
-        <item name="android:background">@drawable/line_design_dark</item>
+        <item name="android:background">@drawable/line_design</item>
     </style>
 
     <!--    Line Design -->

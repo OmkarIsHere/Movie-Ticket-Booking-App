@@ -3,6 +3,11 @@
     <style name="Base.Theme.Home" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/black</item>
+<!--        <item name="android:windowLightStatusBar">true</item>-->
+        <item name="colorPrimaryVariant">@color/black</item>
+        <item name="android:navigationBarColor">?android:attr/colorPrimary</item>
+        <item name="android:statusBarColor">?android:attr/colorPrimary</item>
     </style>
     <!--    Dark Mode -->
     <style name="screen">

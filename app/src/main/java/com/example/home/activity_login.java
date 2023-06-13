@@ -34,6 +34,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -45,14 +46,16 @@ import io.github.muddz.styleabletoast.StyleableToast;
 
 public class activity_login extends AppCompatActivity {
 
+    private static final String TAG = "login";
 
     ProgressBar progressBar;
     RelativeLayout rl;
     Boolean isValid;
-    TextView signup_txt, forgot_pswd;
-    EditText username, password;
-    Button btn_login, fb_login, google_login;
-    ImageView password_img;
+    TextView signup_txt, forgot_pswd,fb_login, google_login;
+    TextInputEditText username, password;
+    Button btn_login;
+
+//    ImageView password_img;
 
     String save_userId, save_username, save_email, save_phone, save_googleId;
     int RC_SIGN_IN = 100;
@@ -70,14 +73,13 @@ public class activity_login extends AppCompatActivity {
         signup_txt = findViewById(R.id.txt_signup);
         forgot_pswd = findViewById(R.id.txt_forgot_password);
         btn_login = findViewById(R.id.btn_login);
-        username = findViewById(R.id.txt_username);
-        password = findViewById(R.id.txt_password);
-        password_img = findViewById(R.id.eye_password);
+        username = (TextInputEditText)findViewById(R.id.txt_username);
+        password = (TextInputEditText)findViewById(R.id.txt_password);
         google_login = findViewById(R.id.google_btn);
         fb_login = findViewById(R.id.facebook_btn);
 
         changeButtonBackground();
-        setPasswordImg();
+//        setPasswordImg();
 
         signup_txt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,29 +89,29 @@ public class activity_login extends AppCompatActivity {
             }
         });
 
-        password_img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(password.getTransformationMethod().equals(HideReturnsTransformationMethod.getInstance())) {
-                    password.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                    if(getMode() == 1) {
-                        password_img.setImageResource(R.drawable.eye_close_dark);
-                    }
-                    else if(getMode() == 0) {
-                        password_img.setImageResource(R.drawable.eye_close);
-                    }
-                }
-                else {
-                    password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                    if(getMode() == 1) {
-                        password_img.setImageResource(R.drawable.eye_password_dark);
-                    }
-                    else if(getMode() == 0) {
-                        password_img.setImageResource(R.drawable.eye_open);
-                    }
-                }
-            }
-        });
+//        password_img.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(password.getTransformationMethod().equals(HideReturnsTransformationMethod.getInstance())) {
+//                    password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+//                    if(getMode() == 1) {
+//                        password_img.setImageResource(R.drawable.eye_close_dark);
+//                    }
+//                    else if(getMode() == 0) {
+//                        password_img.setImageResource(R.drawable.eye_close);
+//                    }
+//                }
+//                else {
+//                    password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+//                    if(getMode() == 1) {
+//                        password_img.setImageResource(R.drawable.eye_password_dark);
+//                    }
+//                    else if(getMode() == 0) {
+//                        password_img.setImageResource(R.drawable.eye_open);
+//                    }
+//                }
+//            }
+//        });
 
         forgot_pswd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -383,13 +385,13 @@ public class activity_login extends AppCompatActivity {
         queue.add(stringRequest);
 
     }
-    private void setPasswordImg() {
-        if (getMode() == 1) {
-            password_img.setImageResource(R.drawable.eye_close_dark);
-        } else if (getMode() == 0) {
-            password_img.setImageResource(R.drawable.eye_close);
-        }
-    }
+//    private void setPasswordImg() {
+//        if (getMode() == 1) {
+//            password_img.setImageResource(R.drawable.eye_close_dark);
+//        } else if (getMode() == 0) {
+//            password_img.setImageResource(R.drawable.eye_close);
+//        }
+//    }
     private int getMode() {
         int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         switch (currentNightMode) {

@@ -8,50 +8,13 @@
     android:orientation="vertical"
     tools:context=".HomeActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?android:attr/actionBarSize"
-        android:background="@color/darkgrey"
-        android:elevation="@dimen/_10sdp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="@dimen/_120sdp"
-            android:layout_height="@dimen/_25sdp"
-            android:layout_marginStart="@dimen/_2sdp"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:background="@drawable/logo" />
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_margin="@dimen/_10sdp">
-        <TextView
-            android:id="@+id/location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/_14ssp"
-            android:textAlignment="center"
-            android:drawableStart="@drawable/sharp_location_on_24"
-            android:text="Select City" />
-        </RelativeLayout>
-
-    </androidx.appcompat.widget.Toolbar>
+    <include layout="@layout/layout_home_menu"/>
 
     <FrameLayout
         android:id="@+id/framelayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?android:attr/actionBarSize"
-        
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         android:background="@color/black"
         app:layout_constraintEnd_toEndOf="parent"

@@ -2,8 +2,12 @@
 
     <style name="Theme.Home" parent="Base.Theme.Home">
         <!-- Transparent system bars for edge-to-edge. -->
-        <item name="android:navigationBarColor">@android:color/transparent</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:windowLightStatusBar">?attr/isLightTheme</item>
+
+<!--        <item name="android:windowLightStatusBar">?attr/isLightTheme</item>-->
+<!--        <item name="android:windowLightStatusBar">true</item>-->
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryVariant">@color/black</item>
+        <item name="android:navigationBarColor">?android:attr/colorPrimary</item>
+        <item name="android:statusBarColor">?android:attr/colorPrimary</item>
     </style>
 </resources>

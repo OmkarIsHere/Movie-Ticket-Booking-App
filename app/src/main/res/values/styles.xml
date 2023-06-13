@@ -33,6 +33,13 @@
         <item name="stRadius">10dp</item>
     </style>
 
+    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="hintTextColor">@color/white</item>
+        <item name="android:textColorHint">@color/white</item>
+        <item name="boxStrokeColor">@color/input_edit_text_layout</item>
+        <item name="boxStrokeWidth">@dimen/_1sdp</item>
+    </style>
+
     <style name="success_toast">
         <item name="stTextBold">true</item>
         <item name="stTextColor">#fff</item>

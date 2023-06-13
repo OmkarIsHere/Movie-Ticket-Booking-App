@@ -64,68 +64,41 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
         back_kolkata= (LinearLayout)view.findViewById(R.id.back_kolkata);
 
 
-        ahemdabad.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               setText("Ahemdabad");
-               selectedButton("ahemdabad");
-            }
+        ahemdabad.setOnClickListener(v -> {
+           setText("Ahemdabad");
+           selectedButton("ahemdabad");
         });
-        banglore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setText("Banglore");
-                selectedButton("banglore");
-            }
+        banglore.setOnClickListener(v -> {
+            setText("Banglore");
+            selectedButton("banglore");
         });
-        chandigarh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               setText("Chandigarh");
-               selectedButton("chandigarh");
-            }
+        chandigarh.setOnClickListener(v -> {
+           setText("Chandigarh");
+           selectedButton("chandigarh");
         });
-        chennai.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setText("Chennai");
-                selectedButton("chennai");
-            }
+        chennai.setOnClickListener(v -> {
+            setText("Chennai");
+            selectedButton("chennai");
         });
-        delhi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               setText("Delhi");
-               selectedButton("delhi");
-            }
+        delhi.setOnClickListener(v -> {
+           setText("Delhi");
+           selectedButton("delhi");
         });
-        hyderabad.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setText("Hyderabad");
-                selectedButton("hyderabad");
-            }
+        hyderabad.setOnClickListener(v -> {
+            setText("Hyderabad");
+            selectedButton("hyderabad");
         });
-        kolkata.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setText("Kolkata");
-                selectedButton("kolkata");
-            }
+        kolkata.setOnClickListener(v -> {
+            setText("Kolkata");
+            selectedButton("kolkata");
         });
-        mumbai.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setText("Mumbai");
-                selectedButton("mumbai");
-            }
+        mumbai.setOnClickListener(v -> {
+            setText("Mumbai");
+            selectedButton("mumbai");
         });
-        pune.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               setText("Pune");
-               selectedButton("pune");
-            }
+        pune.setOnClickListener(v -> {
+           setText("Pune");
+           selectedButton("pune");
         });
         return view;
     }
@@ -139,8 +112,7 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
         location.setText(loc);
     }
 
-
-    public void selectedButton(String button) {
+    private void selectedButton(String button) {
 
         ahemdabad.setBackgroundColor(R.drawable.background_white);
         back_ahemdabad.setBackgroundColor(R.drawable.background_white);
@@ -200,7 +172,6 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
                 back_kolkata.setBackgroundColor(R.drawable.background_colored);
                 break;
         }
-
     }
 
 

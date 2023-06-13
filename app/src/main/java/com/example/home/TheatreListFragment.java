@@ -25,6 +25,7 @@ import android.view.ViewGroup;
 import android.widget.CalendarView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -59,7 +60,7 @@ public class TheatreListFragment extends BottomSheetDialogFragment {
     ProgressBar progressBar;
     ArrayList<CalendarRecycler> calendarList =new ArrayList<>();
     ArrayList<TheatreRecycler> theatreList = new ArrayList<>();
-
+    TextView txtNoList;
     private static final String url = "https://inundated-lenders.000webhostapp.com/api/theatre.php";
     RecyclerView calendarRecycler, theatreRecycler;
     String mid, c, d;
@@ -71,15 +72,18 @@ public class TheatreListFragment extends BottomSheetDialogFragment {
         View view = inflater.inflate(R.layout.fragment_theatre_list, container, false);
 
         progressBar = (ProgressBar)view.findViewById(R.id.progress_bar);
+        txtNoList = (TextView) view.findViewById(R.id.txtNoList);
+
+
 
         calendarRecycler = (RecyclerView)view.findViewById(R.id.calendarRecycler);
         calendarRecycler.setLayoutManager(new LinearLayoutManager(view.getContext(), RecyclerView.HORIZONTAL, false));
         theatreRecycler = (RecyclerView)view.findViewById(R.id.theatreRecycler);
         theatreRecycler.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
-        SharedPreferences prefMovieId = getActivity().getSharedPreferences("movieId", MODE_PRIVATE);
+        SharedPreferences prefMovieId = requireActivity().getSharedPreferences("movieId", MODE_PRIVATE);
         mid = prefMovieId.getString("movieId", "0");
-        SharedPreferences prefCity = getActivity().getSharedPreferences("location", MODE_PRIVATE);
+        SharedPreferences prefCity = requireActivity().getSharedPreferences("location", MODE_PRIVATE);
         c = prefCity.getString("city", "Select City");
 
         return view;
@@ -129,10 +133,12 @@ public class TheatreListFragment extends BottomSheetDialogFragment {
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
+
                             try {
-//                                JSONObject theatreListObjects = tList.getJSONObject(0);
-                                if (!Objects.equals(response, "no")){
                                     JSONArray tList = new JSONArray(response);
+                                    JSONObject Objects = tList.getJSONObject(0);
+                                    String data = Objects.getString("data");
+                                if (data.equals("true")){
                                     for(int i=0; i<tList.length(); i++){
                                         JSONObject theatreListObjects = tList.getJSONObject(i);
                                         String tId = theatreListObjects.getString("theatre_id");
@@ -151,13 +157,16 @@ public class TheatreListFragment extends BottomSheetDialogFragment {
                                     TheatreListRecyclerAdapter fadapter = new TheatreListRecyclerAdapter(getApplicationContext() , theatreList);
                                     theatreRecycler.setAdapter(fadapter);
                                     Log.d("theatre", "Theatre set adapter");
-                                }else{
+                                }else if (data.equals("false")){
+                                    txtNoList.setVisibility(View.VISIBLE);
                                     Toast.makeText(getApplicationContext(),"No theatre available", Toast.LENGTH_SHORT).show();
+                                }else{
+                                    Toast.makeText(getApplicationContext(),"Something went wrong", Toast.LENGTH_SHORT).show();
                                 }
 
                             } catch (JSONException e) {
-//                                throw new RuntimeException(e);
                                 Log.d(TAG, "onResponse: "+ e);
+                                throw new RuntimeException(e);
                             }
                             progressBar.setVisibility(View.GONE);
                         }
@@ -187,6 +196,8 @@ public class TheatreListFragment extends BottomSheetDialogFragment {
                     DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
             Volley.newRequestQueue(getApplicationContext()).add(stringRequest);
+            txtNoList.setVisibility(View.GONE);
+            progressBar.setVisibility(View.VISIBLE);
             Log.d("movie", "theatre queued success: ");
         }
 }

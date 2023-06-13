@@ -153,4 +153,5 @@
     <string name="ratings">ratings</string>
     <string name="_7_8_10">7.8/10</string>
     <string name="description">Description</string>
+    <string name="select_city">Select City</string>
 </resources>
