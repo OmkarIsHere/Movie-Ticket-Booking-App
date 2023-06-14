@@ -184,8 +184,6 @@ public class MovieDetailsActivity extends AppCompatActivity {
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }
-                        progressBar.setVisibility(View.GONE);
-                        rl.setVisibility(View.GONE);
                     }
                 },
                 new Response.ErrorListener() {
@@ -292,6 +290,8 @@ public class MovieDetailsActivity extends AppCompatActivity {
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }
+                        progressBar.setVisibility(View.GONE);
+                        rl.setVisibility(View.GONE);
                     }
                 },
                 new Response.ErrorListener() {

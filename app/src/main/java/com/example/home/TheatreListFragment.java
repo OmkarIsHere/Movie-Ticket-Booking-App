@@ -74,8 +74,6 @@ public class TheatreListFragment extends BottomSheetDialogFragment {
         progressBar = (ProgressBar)view.findViewById(R.id.progress_bar);
         txtNoList = (TextView) view.findViewById(R.id.txtNoList);
 
-
-
         calendarRecycler = (RecyclerView)view.findViewById(R.id.calendarRecycler);
         calendarRecycler.setLayoutManager(new LinearLayoutManager(view.getContext(), RecyclerView.HORIZONTAL, false));
         theatreRecycler = (RecyclerView)view.findViewById(R.id.theatreRecycler);
@@ -159,7 +157,7 @@ public class TheatreListFragment extends BottomSheetDialogFragment {
                                     Log.d("theatre", "Theatre set adapter");
                                 }else if (data.equals("false")){
                                     txtNoList.setVisibility(View.VISIBLE);
-                                    Toast.makeText(getApplicationContext(),"No theatre available", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(),"No theatre available", Toast.LENGTH_LONG).show();
                                 }else{
                                     Toast.makeText(getApplicationContext(),"Something went wrong", Toast.LENGTH_SHORT).show();
                                 }
@@ -196,7 +194,7 @@ public class TheatreListFragment extends BottomSheetDialogFragment {
                     DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
             Volley.newRequestQueue(getApplicationContext()).add(stringRequest);
-            txtNoList.setVisibility(View.GONE);
+//            txtNoList.setVisibility(View.GONE);
             progressBar.setVisibility(View.VISIBLE);
             Log.d("movie", "theatre queued success: ");
         }

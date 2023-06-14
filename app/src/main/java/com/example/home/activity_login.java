@@ -116,7 +116,7 @@ public class activity_login extends AppCompatActivity {
         forgot_pswd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(activity_login.this, com.example.home.activity_forgotPassword.class);
+                Intent intent = new Intent(activity_login.this, activity_forgotPassword.class);
                 startActivity(intent);
             }
         });
@@ -125,14 +125,14 @@ public class activity_login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-//                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);  //<-- Temp Code
-//                startActivity(intent);
-//                finish();
-                if (validation()) {    //<-- Temporary commenting this code for testing...
-                    progressBar.setVisibility(View.VISIBLE);
-                    rl.setVisibility(View.VISIBLE);
-                    checkLoginCredentials();
-                }
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);  //<-- Temp Code
+                startActivity(intent);
+                finish();
+//                if (validation()) {    //<-- Temporary commenting this code for testing...
+//                    progressBar.setVisibility(View.VISIBLE);
+//                    rl.setVisibility(View.VISIBLE);
+//                    checkLoginCredentials();
+//                }
             }
         });
 
@@ -322,7 +322,7 @@ public class activity_login extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            Log.d(TAG, "LogIn Response: " + response.toString());
+                            Log.d(TAG, "LogIn Response: " + response);
                             JSONObject jsonObject = new JSONObject(response);
 
                             String status = jsonObject.getString("status");
@@ -347,7 +347,6 @@ public class activity_login extends AppCompatActivity {
                             }
 
                             else if(status.equals("google_signup")) {
-
                                 progressBar.setVisibility(View.GONE);
                                 rl.setVisibility(View.GONE);
 
@@ -392,16 +391,16 @@ public class activity_login extends AppCompatActivity {
 //            password_img.setImageResource(R.drawable.eye_close);
 //        }
 //    }
-    private int getMode() {
-        int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-        switch (currentNightMode) {
-            case Configuration.UI_MODE_NIGHT_NO:
-                // Night mode is not active, we're using the light theme
-                return 1;
-            case Configuration.UI_MODE_NIGHT_YES:
-                // Night mode is active, we're using dark theme
-                return 0;
-        }
-        return 2;
-    }
+//    private int getMode() {
+//        int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+//        switch (currentNightMode) {
+//            case Configuration.UI_MODE_NIGHT_NO:
+//                // Night mode is not active, we're using the light theme
+//                return 1;
+//            case Configuration.UI_MODE_NIGHT_YES:
+//                // Night mode is active, we're using dark theme
+//                return 0;
+//        }
+//        return 2;
+//    }
 }

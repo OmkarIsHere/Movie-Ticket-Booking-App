@@ -8,6 +8,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -46,6 +47,7 @@ public class activity_verification extends AppCompatActivity {
     RelativeLayout rl;
     EditText et1, et2, et3, et4, et5, et6;
     Button submit_btn;
+    ImageButton btnBack;
     TextView phone_no, resend_otp;
     String userOTP, getOTP;
 
@@ -67,6 +69,9 @@ public class activity_verification extends AppCompatActivity {
         phone_no = findViewById(R.id.phone_no);
         resend_otp = findViewById(R.id.resend);
         submit_btn = findViewById(R.id.btn_submit);
+        btnBack = findViewById(R.id.btnBack);
+
+        btnBack.setOnClickListener(v -> onBackPressed());
 
         getOTP = getIntent().getStringExtra("verify_otp");
 

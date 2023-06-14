@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/screen"
+    android:background="@color/black"
     tools:context=".activity_verification">
 
     <RelativeLayout
@@ -17,16 +17,18 @@
             android:layout_height="@dimen/_30sdp"
             android:layout_centerInParent="true"
             android:visibility="gone"/>
-    </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/login_form_"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/_10sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="@string/app_name"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_arrow_back"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -44,20 +46,19 @@
                     android:id="@+id/frame_105"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="43dp"
-                    android:layout_marginTop="356dp"
-                    android:gravity="center"
-                    android:layout_marginLeft="43dp">
+                    android:layout_marginTop="306dp"
+                    android:gravity="center">
 
 
                     <RelativeLayout
                         android:id="@+id/group_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
                         android:layout_marginStart="0dp"
-                        android:gravity="center"
                         android:layout_marginTop="0dp"
-                        android:layout_marginLeft="0dp">
+                        android:layout_marginEnd="0dp"
+                        android:gravity="center">
 
                         <TextView
                             android:id="@+id/resend"
@@ -66,8 +67,8 @@
                             android:layout_height="40dp"
                             android:layout_marginLeft="150dp"
                             android:layout_marginTop="0dp"
-                            android:text="@string/resend"
                             android:gravity="center"
+                            android:text="@string/resend"
                             android:textColor="@color/signup_color"
                             android:textSize="14sp" />
 
@@ -75,10 +76,9 @@
                             style="@style/textDefaultFont"
                             android:layout_width="150dp"
                             android:layout_height="40dp"
-                            android:layout_marginLeft="0dp"
-                            android:layout_marginTop="0dp"
                             android:gravity="center"
                             android:text="@string/otp_not_received"
+                            android:textColor="@color/white"
                             android:textSize="14sp" />
 
                     </RelativeLayout>
@@ -100,13 +100,13 @@
 
                         <EditText
                             android:id="@+id/inputotp1"
+                            style="@style/otp_box"
                             android:layout_width="40dp"
                             android:layout_height="46dp"
                             android:layout_marginStart="10dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginEnd="10dp"
                             android:layout_marginRight="10dp"
-                            style="@style/otp_box"
                             android:gravity="center"
                             android:imeOptions="actionNext"
                             android:importantForAutofill="no"
@@ -117,12 +117,12 @@
 
                         <EditText
                             android:id="@+id/inputotp2"
+                            style="@style/otp_box"
                             android:layout_width="40dp"
                             android:layout_height="46dp"
                             android:layout_marginStart="10dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginEnd="10dp"
-                            style="@style/otp_box"
                             android:gravity="center"
                             android:imeOptions="actionNext"
                             android:importantForAutofill="no"
@@ -133,12 +133,12 @@
 
                         <EditText
                             android:id="@+id/inputotp3"
+                            style="@style/otp_box"
                             android:layout_width="40dp"
                             android:layout_height="46dp"
                             android:layout_marginStart="10dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginEnd="10dp"
-                            style="@style/otp_box"
                             android:gravity="center"
                             android:imeOptions="actionNext"
                             android:importantForAutofill="no"
@@ -149,12 +149,12 @@
 
                         <EditText
                             android:id="@+id/inputotp4"
+                            style="@style/otp_box"
                             android:layout_width="40dp"
                             android:layout_height="46dp"
                             android:layout_marginStart="10dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginEnd="10dp"
-                            style="@style/otp_box"
                             android:gravity="center"
                             android:imeOptions="actionNext"
                             android:importantForAutofill="no"
@@ -165,12 +165,12 @@
 
                         <EditText
                             android:id="@+id/inputotp5"
+                            style="@style/otp_box"
                             android:layout_width="40dp"
                             android:layout_height="46dp"
                             android:layout_marginStart="10dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginEnd="10dp"
-                            style="@style/otp_box"
                             android:gravity="center"
                             android:imeOptions="actionNext"
                             android:importantForAutofill="no"
@@ -181,12 +181,12 @@
 
                         <EditText
                             android:id="@+id/inputotp6"
+                            style="@style/otp_box"
                             android:layout_width="40dp"
                             android:layout_height="46dp"
                             android:layout_marginStart="10dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginEnd="10dp"
-                            style="@style/otp_box"
                             android:gravity="center"
                             android:imeOptions="actionNext"
                             android:importantForAutofill="no"
@@ -201,13 +201,13 @@
                         android:layout_width="312dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="0dp"
-                        android:layout_marginTop="60dp"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="30dp"
                         android:background="@drawable/rectangle_facebook_google"
                         android:gravity="center"
                         android:text="@string/submit"
                         android:textColor="@color/white"
-                        app:backgroundTint="@color/rectangle_3_color"
-                        android:layout_marginLeft="0dp" />
+                        app:backgroundTint="@color/rectangle_3_color" />
 
                 </LinearLayout>
 
@@ -225,10 +225,9 @@
                         android:layout_width="310dp"
                         android:layout_height="50dp"
                         android:layout_gravity="center_horizontal|center"
-                        android:layout_marginLeft="-4dp"
-                        android:layout_marginTop="0dp"
                         android:gravity="center"
                         android:text="@string/verify_code"
+                        android:textColor="@color/white"
                         android:textSize="24sp"
                         android:textStyle="bold" />
 
@@ -241,6 +240,7 @@
                         android:layout_marginTop="50dp"
                         android:gravity="center"
                         android:text="@string/verify_msg"
+                        android:textColor="@color/white"
                         android:textSize="16sp" />
 
                     <TextView
@@ -253,6 +253,7 @@
                         android:layout_marginTop="110dp"
                         android:gravity="center"
                         android:text="@string/null_msg"
+                        android:textColor="@color/white"
                         android:textSize="16sp" />
 
                 </RelativeLayout>

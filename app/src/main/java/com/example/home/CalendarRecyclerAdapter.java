@@ -4,6 +4,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -87,6 +89,7 @@ public class CalendarRecyclerAdapter extends RecyclerView.Adapter<CalendarRecycl
                 Toast.makeText(view.getContext(), date, Toast.LENGTH_SHORT).show();
 //                holder.itemView.setBackgroundColor(R.drawable.background_colored);
 
+
                 TheatreListFragment t = new TheatreListFragment();
                 t.setTheatreList(date, city, movie_id);
             }
@@ -104,12 +107,12 @@ public class CalendarRecyclerAdapter extends RecyclerView.Adapter<CalendarRecycl
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-
             date = itemView.findViewById(R.id.date);
             day = itemView.findViewById(R.id.day);
             hdate = itemView.findViewById(R.id.invisibledate);
         }
     }
+
 //    public void setTheatreList(String date){
 //
 //        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,

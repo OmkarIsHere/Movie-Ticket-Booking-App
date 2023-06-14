@@ -34,10 +34,13 @@
     </style>
 
     <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="colorPrimary">@color/input_edit_text_layout</item>
         <item name="hintTextColor">@color/white</item>
         <item name="android:textColorHint">@color/white</item>
         <item name="boxStrokeColor">@color/input_edit_text_layout</item>
         <item name="boxStrokeWidth">@dimen/_1sdp</item>
+        <item name="colorControlActivated">@color/clr_grey_text_transparent</item>
+        <item name="endIconTint">@color/grey</item>
     </style>
 
     <style name="success_toast">

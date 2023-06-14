@@ -14,6 +14,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -29,6 +30,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
@@ -43,13 +45,15 @@ import java.util.concurrent.TimeUnit;
 import io.github.muddz.styleabletoast.StyleableToast;
 
 public class activity_signup extends AppCompatActivity {
-
+    private static final String TAG = "activity_signup";
     TextView login_txt;
     ProgressBar progressBar;
+    ImageButton btnBack;
     RelativeLayout rl;
-    EditText username, email, password, phone;
-    Button signupBtn, fb_login, google_login;
-    ImageView password_img;
+    TextInputEditText username, email, password, phone;
+    Button signupBtn;
+    TextView fb_login, google_login;
+//    ImageView password_img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,24 +70,27 @@ public class activity_signup extends AppCompatActivity {
         signupBtn = findViewById(R.id.signup_btn);
         google_login = findViewById(R.id.google_btn);
         fb_login = findViewById(R.id.facebook_btn);
+        btnBack = findViewById(R.id.btnBack);
 
-        username = findViewById(R.id.txt_username);
-        email = findViewById(R.id.txt_email);
-        password = findViewById(R.id.txt_password);
-        phone = findViewById(R.id.txt_phone);
+        username =(TextInputEditText)findViewById(R.id.txt_username);
+        email =(TextInputEditText)findViewById(R.id.txt_email);
+        password =(TextInputEditText)findViewById(R.id.txt_password);
+        phone = (TextInputEditText)findViewById(R.id.txt_phone);
 
-        password_img = findViewById(R.id.eye_password);
+//        password_img = findViewById(R.id.eye_password);
 
-        setPasswordImg();
+//        setPasswordImg();
 
-        login_txt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(activity_signup.this, activity_login.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+        btnBack.setOnClickListener(v -> onBackPressed());
+
+                login_txt.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(activity_signup.this, activity_login.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
 
         signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,29 +102,29 @@ public class activity_signup extends AppCompatActivity {
         });
 
 
-        password_img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(password.getTransformationMethod().equals(HideReturnsTransformationMethod.getInstance())) {
-                    password.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                    if(getMode() == 1) {
-                        password_img.setImageResource(R.drawable.eye_close_dark);
-                    }
-                    else if(getMode() == 0) {
-                        password_img.setImageResource(R.drawable.eye_close);
-                    }
-                }
-                else {
-                    password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                    if(getMode() == 1) {
-                        password_img.setImageResource(R.drawable.eye_password_dark);
-                    }
-                    else if(getMode() == 0) {
-                        password_img.setImageResource(R.drawable.eye_open);
-                    }
-                }
-            }
-        });
+//        password_img.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(password.getTransformationMethod().equals(HideReturnsTransformationMethod.getInstance())) {
+//                    password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+//                    if(getMode() == 1) {
+//                        password_img.setImageResource(R.drawable.eye_close_dark);
+//                    }
+//                    else if(getMode() == 0) {
+//                        password_img.setImageResource(R.drawable.eye_close);
+//                    }
+//                }
+//                else {
+//                    password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+//                    if(getMode() == 1) {
+//                        password_img.setImageResource(R.drawable.eye_password_dark);
+//                    }
+//                    else if(getMode() == 0) {
+//                        password_img.setImageResource(R.drawable.eye_open);
+//                    }
+//                }
+//            }
+//        });
     }
 
     @Override
@@ -264,24 +271,24 @@ public class activity_signup extends AppCompatActivity {
         return true;
     }
 
-    private void setPasswordImg() {
-        if (getMode() == 1) {
-            password_img.setImageResource(R.drawable.eye_close_dark);
-        } else if (getMode() == 0) {
-            password_img.setImageResource(R.drawable.eye_close);
-        }
-    }
-    private int getMode() {
-        int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-        switch (currentNightMode) {
-            case Configuration.UI_MODE_NIGHT_NO:
-                // Night mode is not active, we're using the light theme
-                return 1;
-            case Configuration.UI_MODE_NIGHT_YES:
-                // Night mode is active, we're using dark theme
-                return 0;
-        }
-        return 2;
-    }
+//    private void setPasswordImg() {
+//        if (getMode() == 1) {
+//            password_img.setImageResource(R.drawable.eye_close_dark);
+//        } else if (getMode() == 0) {
+//            password_img.setImageResource(R.drawable.eye_close);
+//        }
+//    }
+//    private int getMode() {
+//        int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+//        switch (currentNightMode) {
+//            case Configuration.UI_MODE_NIGHT_NO:
+//                // Night mode is not active, we're using the light theme
+//                return 1;
+//            case Configuration.UI_MODE_NIGHT_YES:
+//                // Night mode is active, we're using dark theme
+//                return 0;
+//        }
+//        return 2;
+//    }
 
 }
