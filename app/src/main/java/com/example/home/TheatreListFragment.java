@@ -100,7 +100,7 @@ public class TheatreListFragment extends BottomSheetDialogFragment {
 
     }
 
-        public void setCalendarRecycler(){
+    public void setCalendarRecycler(){
 
             LocalDate localDate = LocalDate.now();
             LocalDate t =  localDate.minusDays(1);
@@ -125,77 +125,77 @@ public class TheatreListFragment extends BottomSheetDialogFragment {
         }
 
 
-        public void setTheatreList(String date, String city, String movie_id){
+    public void setTheatreList(String date, String city, String movie_id){
 
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                    new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
+     StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+             new Response.Listener<String>() {
+                 @Override
+                 public void onResponse(String response) {
 
-                            try {
-                                    JSONArray tList = new JSONArray(response);
-                                    JSONObject Objects = tList.getJSONObject(0);
-                                    String data = Objects.getString("data");
-                                if (data.equals("true")){
-                                    for(int i=0; i<tList.length(); i++){
-                                        JSONObject theatreListObjects = tList.getJSONObject(i);
-                                        String tId = theatreListObjects.getString("theatre_id");
-                                        String tName = theatreListObjects.getString("theatre_name");
-                                        String language = theatreListObjects.getString("show_language");
-                                        String screen = theatreListObjects.getString("screen_type");
-                                        String date = theatreListObjects.getString("show_date");
-                                        String showid = theatreListObjects.getString("show_id");
-                                        String time = theatreListObjects.getString("show_time");
+                     try {
+                             JSONArray tList = new JSONArray(response);
+                             JSONObject Objects = tList.getJSONObject(0);
+                             String data = Objects.getString("data");
+                         if (data.equals("true")){
+                             for(int i=0; i<tList.length(); i++){
+                                 JSONObject theatreListObjects = tList.getJSONObject(i);
+                                 String tId = theatreListObjects.getString("theatre_id");
+                                 String tName = theatreListObjects.getString("theatre_name");
+                                 String language = theatreListObjects.getString("show_language");
+                                 String screen = theatreListObjects.getString("screen_type");
+                                 String date = theatreListObjects.getString("show_date");
+                                 String showid = theatreListObjects.getString("show_id");
+                                 String time = theatreListObjects.getString("show_time");
 
-                                        TheatreRecycler tRecycler = new TheatreRecycler(tName, language, screen, showid, time, tId, date);
-                                        theatreList.add(tRecycler);
-                                    }
-                                    Log.d("theatre","arrtheatreData"+ theatreList);
+                                 TheatreRecycler tRecycler = new TheatreRecycler(tName, language, screen, showid, time, tId, date);
+                                 theatreList.add(tRecycler);
+                             }
+                             Log.d("theatre","arrtheatreData"+ theatreList);
 
-                                    TheatreListRecyclerAdapter fadapter = new TheatreListRecyclerAdapter(getApplicationContext() , theatreList);
-                                    theatreRecycler.setAdapter(fadapter);
-                                    Log.d("theatre", "Theatre set adapter");
-                                }else if (data.equals("false")){
-                                    txtNoList.setVisibility(View.VISIBLE);
-                                    Toast.makeText(getApplicationContext(),"No theatre available", Toast.LENGTH_LONG).show();
-                                }else{
-                                    Toast.makeText(getApplicationContext(),"Something went wrong", Toast.LENGTH_SHORT).show();
-                                }
+                             TheatreListRecyclerAdapter fadapter = new TheatreListRecyclerAdapter(getApplicationContext() , theatreList);
+                             theatreRecycler.setAdapter(fadapter);
+                             Log.d("theatre", "Theatre set adapter");
+                         }else if (data.equals("false")){
+                             txtNoList.setVisibility(View.VISIBLE);
+                             Toast.makeText(getApplicationContext(),"No theatre available", Toast.LENGTH_LONG).show();
+                         }else{
+                             Toast.makeText(getApplicationContext(),"Something went wrong", Toast.LENGTH_SHORT).show();
+                         }
 
-                            } catch (JSONException e) {
-                                Log.d(TAG, "onResponse: "+ e);
-                                throw new RuntimeException(e);
-                            }
-                            progressBar.setVisibility(View.GONE);
-                        }
-                    },
-                    new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Log.d("theatre", "theatre LogE " + error.getMessage());
+                     } catch (JSONException e) {
+                         Log.d(TAG, "onResponse: "+ e);
+                         throw new RuntimeException(e);
+                     }
+//                     progressBar.setVisibility(View.GONE);
+                 }
+             },
+             new Response.ErrorListener() {
+                 @Override
+                 public void onErrorResponse(VolleyError error) {
+                     Log.d("theatre", "theatre LogE " + error.getMessage());
 
-                        }
+                 }
 
-                    }){
-                @Nullable
-                @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String,String> params = new HashMap<>();
-                    params.put("movieid", movie_id);
-                    params.put("city", city);
-                    params.put("date", date);
-                    return params;
-                }
-            };
+             }){
+         @Nullable
+         @Override
+         protected Map<String, String> getParams() throws AuthFailureError {
+             Map<String,String> params = new HashMap<>();
+             params.put("movieid", movie_id);
+             params.put("city", city);
+             params.put("date", date);
+             return params;
+         }
+     };
 
-            stringRequest.setRetryPolicy(new DefaultRetryPolicy(
-                    50000,
-                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+     stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+             50000,
+             DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+             DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
-            Volley.newRequestQueue(getApplicationContext()).add(stringRequest);
-//            txtNoList.setVisibility(View.GONE);
-            progressBar.setVisibility(View.VISIBLE);
-            Log.d("movie", "theatre queued success: ");
+     Volley.newRequestQueue(getApplicationContext()).add(stringRequest);
+//     txtNoList.setVisibility(View.GONE);
+//     progressBar.setVisibility(View.VISIBLE);
+     Log.d("movie", "theatre queued success: ");
         }
 }
